@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>База данных</title>
+
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand"
+            >База данных <span id="sizeSpan"></span
+          ></span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input
+                type="search"
+                id="filterField"
+                placeholder="Поиск по тегам"
+                class="form-control"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="noteList"></div>
+      <div class="pull-right">
+        <button id="addNoteButton" class="btn btn-success">
+          Загрузить
+        </button>
+      </div>
+      <div id="noteDetail"></div>
+
+      <div id="noteForm">
+        <h2>Edit Note</h2>
+        <form role="form" class="form-horizontal">
+          <input type="hidden" id="key" />
+          <div class="form-group">
+            <label for="title" class="col-lg-2 control-label">Название</label>
+            <div class="col-lg-10">
+              <input type="text" id="title" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="title1" class="col-lg-2 control-label">Формат</label>
+            <div class="col-lg-10">
+              <select type="text" id="title1" required class="form-control">
+                <option>Альбом</option>
+
+                <option>Портрет</option>
+
+                <option>Квадрат</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="size" class="col-lg-2 control-label">Размер</label>
+            <div class="col-lg-10">
+              <input type="text" id="size" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="weight" class="col-lg-2 control-label">Вес</label>
+            <div class="col-lg-10">
+              <input type="text" id="weight" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type" class="col-lg-2 control-label">Mimetype</label>
+            <div class="col-lg-10">
+              <input type="text" id="type" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date" class="col-lg-2 control-label"
+              >Дата создания</label
+            >
+            <div class="col-lg-10">
+              <input type="text" id="date" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="body" class="col-lg-2 control-label">Описание</label>
+            <div class="col-lg-10">
+              <textarea id="body" required class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="photo1" class="col-lg-2 control-label"
+              >Загрузить фото</label
+            >
+            <div class="col-lg-10">
+              <input type="file" id="photo1" accept="image/*" onchange="showPreview(event);" multiple />
+              <output id="list"></output>
+              <div class="preview">
+                <img id="photo1-preview">
+              </div>
+              
+              <script>
+                function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("photo1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+              </script>
+            </div>
+          </div>          
+          <div class="form-group">
+            <label for="tags" class="col-lg-2 control-label"
+              >Теги(через запятую)</label
+            >
+            <div class="col-lg-10">
+              <input type="text" id="tags" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+              <button id="saveNoteButton" class="btn btn-default">
+                Сохранить
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/jquery-2.0.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
